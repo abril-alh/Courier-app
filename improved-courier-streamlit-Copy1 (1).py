@@ -4,7 +4,7 @@ from datetime import datetime
 import pytz
 import time
 import folium
-from streamlit_folium import folium_static
+# from streamlit_folium import folium_static
 import pandas as pd
 
 # Set page config for a cleaner appearance
