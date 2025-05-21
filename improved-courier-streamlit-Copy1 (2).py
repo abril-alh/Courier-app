@@ -160,7 +160,6 @@ try:
         loc_start = None
         loc_end = None
 
-
     if loc_start and loc_end:
         lat1, lon1 = loc_start.latitude, loc_start.longitude
         lat2, lon2 = loc_end.latitude, loc_end.longitude
