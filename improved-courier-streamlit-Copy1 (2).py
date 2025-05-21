@@ -245,14 +245,19 @@ if city:
 else:
     st.info("Enter city to display traffic chart.")
 
-# --- Sidebar for User Feedback ---
-st.sidebar.header("📝 Share Your Experience")
-user_name = st.sidebar.text_input("Your Name", "")
-user_feedback = st.sidebar.text_area("How was your experience using this app?")
-submit_feedback = st.sidebar.button("Submit")
 
-if submit_feedback and user_feedback:
+
+# st.title("Main App Area")
+
+# Sidebar
+st.sidebar.header("📝 Share Your Experience")
+user_name = st.sidebar.text_input("Your Name")
+user_feedback = st.sidebar.text_area("How was your experience using this app?")
+submit = st.sidebar.button("Submit")
+
+if submit and user_feedback:
     st.sidebar.success("🎉 Thank you for your feedback!")
+
 
                 
                 
