@@ -150,14 +150,16 @@ st.header("🗺️ Route Map")
 gas_stations_info = None
 if start_address and end_address:
     geolocator = Nominatim(user_agent="delivery_app")
-    try:
-        query_start = f"{start_address}, {city}" if city else start_address
-        query_end = f"{end_address}, {city}" if city else end_address
-        loc_start = geolocator.geocode(query_start)
-        loc_end = geolocator.geocode(query_end)
-    except Exception:
-        loc_start = None
-        loc_end = None
+    
+try:
+    query_start = f"{start_address}, {city}" if city else start_address
+    query_end = f"{end_address}, {city}" if city else end_address
+    loc_start = geolocator.geocode(query_start) or geolocator.geocode(start_address)
+    loc_end = geolocator.geocode(query_end) or geolocator.geocode(end_address)
+except Exception:
+    loc_start = None
+    loc_end = None
+
 
     if loc_start and loc_end:
         lat1, lon1 = loc_start.latitude, loc_start.longitude
@@ -242,6 +244,15 @@ if city:
     st.altair_chart(traffic_chart, use_container_width=True)
 else:
     st.info("Enter city to display traffic chart.")
+
+# --- Sidebar for User Feedback ---
+st.sidebar.header("📝 Share Your Experience")
+user_name = st.sidebar.text_input("Your Name", "")
+user_feedback = st.sidebar.text_area("How was your experience using this app?")
+submit_feedback = st.sidebar.button("Submit")
+
+if submit_feedback and user_feedback:
+    st.sidebar.success("🎉 Thank you for your feedback!")
 
                 
                 
