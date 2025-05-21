@@ -150,15 +150,14 @@ st.header("🗺️ Route Map")
 gas_stations_info = None
 if start_address and end_address:
     geolocator = Nominatim(user_agent="delivery_app")
-    
-try:
+    try:
         query_start = f"{start_address}, {city}" if city else start_address
         query_end = f"{end_address}, {city}" if city else end_address
         loc_start = geolocator.geocode(query_start)
         loc_end = geolocator.geocode(query_end)
     except Exception:
-    loc_start = None
-    loc_end = None
+        loc_start = None
+        loc_end = None
 
     if loc_start and loc_end:
         lat1, lon1 = loc_start.latitude, loc_start.longitude
