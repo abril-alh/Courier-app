@@ -157,8 +157,8 @@ try:
         loc_start = geolocator.geocode(query_start)
         loc_end = geolocator.geocode(query_end)
     except Exception:
-        loc_start = None
-        loc_end = None
+    loc_start = None
+    loc_end = None
 
     if loc_start and loc_end:
         lat1, lon1 = loc_start.latitude, loc_start.longitude
